@@ -59,7 +59,7 @@ const ExpandableComponent = ({ item, onClickFunction }) => {
   );
 };
 
-const App = () => {
+const Profile = () => {
   const [listDataSource, setListDataSource] = useState(CONTENT);
   const [multiSelect, setMultiSelect] = useState(false);
 
@@ -117,7 +117,7 @@ const App = () => {
   );
 };
 
-export default App;
+export default Profile;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
