@@ -12,47 +12,11 @@ const DATA = [
   {
     key: 0,
     title: 'Ceiling Fan',
-    data: ['Pizza', 'Burger', 'Risotto'],
-  },
-  {
-    key: 1,
-    title: 'Pesdestal',
-    data: ['French Fries', 'Onion Rings', 'Fried Shrimps'],
-  },
-  {
-    key: 2,
-    title: 'Exhaust Plastic',
-    data: ['Water', 'Coke', 'Beer'],
-  },
-  {
-    key: 3,
-    title: 'Louver',
-    data: ['Cheese Cake', 'Ice Cream'],
-  },
-  {
-    key: 4,
-    title: 'Lifestyle Series',
-    data: ['Pizza', 'Burger', 'Risotto'],
-  },
-  {
-    key: 5,
-    title: 'Inverter / AC-DC',
-    data: ['French Fries', 'Onion Rings', 'Fried Shrimps'],
-  },
-  {
-    key: 6,
-    title: 'Exhaust Metal',
-    data: ['Water', 'Coke', 'Beer'],
-  },
-  {
-    key: 7,
-    title: 'Bracket',
-    data: ['Cheese Cake', 'Ice Cream'],
-  },
-  {
-    key: 8,
-    title: 'False Ceiling',
-    data: ['Cheese Cake', 'Ice Cream'],
+    data: [ 
+      {"name": 'Pizza', "MRP": 30, "purchase": 22},
+      {"name": 'Burger', "MRP": 20, "purchase": 12},
+      {"name": 'Risotto', "MRP": 50, "purchase": 33}
+    ],
   },
 ];
 
@@ -64,7 +28,9 @@ export default function Feed() {
       keyExtractor={(item, index) => item + index}
       renderItem={({item}) => (
         <View style={styles.item}>
-          <Text style={styles.title}>{item}</Text>
+          <Text style={styles.title}>{item.name}</Text>
+          <Text style={styles.title}>{item.MRP}</Text>
+          <Text style={styles.title}>{item.purchase}</Text>
         </View>
       )}
       renderSectionHeader={({section: {title}}) => (
