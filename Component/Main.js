@@ -1,7 +1,6 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import Feed from '../src/Feed'
-import Article from '../src/Article';
 import Account from '../src/Account';
 import Royal from '../src/Royal';
 import Setting from '../src/Setting';
@@ -20,7 +19,6 @@ export default function Main() {
       <Drawer.Navigator initialRouteName='Royal'>
         <Drawer.Screen name="Account" component={Account} />
         <Drawer.Screen name="Feed" component={Feed} />
-        <Drawer.Screen name="Article" component={Article} />
         <Drawer.Screen name="Royal" component={Royal} />
         <Drawer.Screen name="GFC" component={GFC} />
         <Drawer.Screen name="SK" component={SK} />
