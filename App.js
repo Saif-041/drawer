@@ -4,7 +4,7 @@ import Main from './Component/Main'
 
 export default function App() {
   return (
-    <View style={{flex: 1, paddingTop: 2, backgroudColor: '#467588'}}>
+    <View style={{flex: 1, paddingTop: 30, backgroundColor: '#f8da17'}}>
       <Main />
     </View>
   );

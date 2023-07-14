@@ -19,7 +19,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/al-falah_logo.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.msu041.RateList"

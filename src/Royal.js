@@ -24,7 +24,7 @@ const ExpandableComponent = ({ item, onClickFunction }) => {
   }, [item.isExpanded]);
 
   return (
-    <View>
+    <View style={styles.mainHeader}>
       {/*Header of the Expandable List Item*/}
       <TouchableOpacity
         activeOpacity={0.8}
@@ -44,8 +44,7 @@ const ExpandableComponent = ({ item, onClickFunction }) => {
             style={styles.content}
             onPress={() => alert('Name: ' + item.val + '\nMRP: ' + item.mrp + '\nDescription: ' + item.description)}>
             <Text style={styles.text}>
-              {key + 1}. {item.val} - {item.mrp}
-            </Text>
+              {key < 9 ? ' '+ (key+1) : (key+1)}. {item.mrp} - {item.val}            </Text>
             <View style={styles.separator} />
           </TouchableOpacity>
         ))}
@@ -80,15 +79,16 @@ const Royal = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#8f0c1f', paddingLeft: 5 }}>
       <View style={styles.container}>
         <View style={{ flexDirection: 'row', padding: 10 }}>
-          <Text style={styles.titleText}>Rate List</Text>
+          <Text style={styles.titleText}>Company Rate List</Text>
           <TouchableOpacity onPress={() => setMultiSelect(!multiSelect)}>
             <Text
               style={{
                 textAlign: 'center',
                 justifyContent: 'center',
+                color: '#f8da17',
               }}>
               {multiSelect
                 ? 'Enable Single \n Expand'
@@ -119,26 +119,35 @@ const styles = StyleSheet.create({
   },
   titleText: {
     flex: 1,
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: 'bold',
+    color: '#fff',
   },
-  header: {
+  mainHeader: {
+    // backgroundColor: '#c4161c',
     backgroundColor: '#F5FCFF',
+    paddingLeft: 1,
+    paddingRight: 1,
+    margin: 1,
+  },  
+  header: {
+    backgroundColor: '#fff',
     padding: 20,
+    margin: 1,
   },
   headerText: {
-    fontSize: 16,
+    fontSize: 22,
     fontWeight: '500',
   },
   separator: {
     height: 0.5,
-    backgroundColor: '#808080',
+    backgroundColor: 'red',
     width: '95%',
     marginLeft: 16,
     marginRight: 16,
   },
   text: {
-    fontSize: 16,
+    fontSize: 18,
     color: '#606070',
     padding: 10,
   },
@@ -159,16 +168,16 @@ const CONTENT = [
       { id: 2, val: 'Deluxe - Platinum - Opal 56"', mrp: 7850, description: 'Royal Deluxe / Platinum / Opal 56" Copper wire.\n> CCA wire - 7250' },
       { id: 3, val: 'Hi Standard', mrp: 7150, description: 'Royal Economy/Hi-Standard 56" Copper wire.\n> CCA wire - 6550' },
       { id: 4, val: 'Water Proof', mrp: 7900, description: 'Royal Water Proof Emperor 56" Copper wire\n> Majesty Water Proof 56" Copper Wire  MRP - 8000' },
-      { id: 4, val: 'Passion 36"', mrp: 6850, description: 'Royal Passion 36" Copper wire' },
-      { id: 5, val: 'Passion 56"', mrp: 8000, description: 'Royal Passion 56" Copper wire' },
-      { id: 6, val: 'Regency', mrp: 8100, description: 'Royal Regency 56" Copper wire' },
-      { id: 7, val: 'Regent / Regal', mrp: 8100, description: 'Royal Regent / Regal 56" Copper wire' },
-      { id: 8, val: 'Jem - Trinity', mrp: 8200, description: 'Royal Jem 56" Copper wire' },
-      { id: 9, val: 'Energy Saver 50w', mrp: 8200, description: 'Royal Energy Saver 50 watt 56" Copper wire' },
-      { id: 10, val: 'Noble - Imperial 3B', mrp: 8350, description: 'Royal Noble / Imperial 3 Blade 56" Copper wire' },
-      { id: 11, val: 'Imperial 4B', mrp: 8550, description: 'Royal Imperial 4 Blade 56" Copper wire' },
-      { id: 12, val: 'Ornament 5B', mrp: 13000, description: 'Royal Ornament 5 Blade 56" Copper wire' },
+      { id: 5, val: 'Passion 36"', mrp: 6850, description: 'Royal Passion 36" Copper wire' },
+      { id: 6, val: 'Passion 56"', mrp: 8000, description: 'Royal Passion 56" Copper wire' },
+      { id: 7, val: 'Regency', mrp: 8100, description: 'Royal Regency 56" Copper wire' },
+      { id: 8, val: 'Regent / Regal', mrp: 8100, description: 'Royal Regent / Regal 56" Copper wire' },
+      { id: 9, val: 'Jem - Trinity', mrp: 8200, description: 'Royal Jem 56" Copper wire' },
+      { id: 10, val: 'Energy Saver 50w', mrp: 8200, description: 'Royal Energy Saver 50 watt 56" Copper wire' },
+      { id: 11, val: 'Noble - Imperial 3B', mrp: 8350, description: 'Royal Noble / Imperial 3 Blade 56" Copper wire' },
+      { id: 12, val: 'Imperial 4B', mrp: 8550, description: 'Royal Imperial 4 Blade 56" Copper wire' },
       { id: 13, val: 'RL-040', mrp: 10000, description: 'Royal LifeStyle Series RL-040 Model 56" Copper wire' },
+      { id: 14, val: 'Ornament 5B', mrp: 13000, description: 'Royal Ornament 5 Blade 56" Copper wire' },
     ],
   },
   {
@@ -180,8 +189,8 @@ const CONTENT = [
       { id: 2, val: 'Opal AC/DC', mrp: 7750, description: 'Royal Opal AC/DC 56" Copper wire.' },
       { id: 3, val: 'Regency - Passion - Cresent AC/DC', mrp: 8300, description: 'Royal Passion/Regency/Cresent AC/DC 56" Copper wire.' },
       { id: 4, val: 'Imperial AC/DC', mrp: 8550, description: 'Royal Water Proof Emperor  AC/DC 56" Copper wire.' },
-      { id: 4, val: 'RL-050 AC/DC RF kit', mrp: 10100, description: 'Royal LifeStyle Series RL-050 Model AC/DC RF kit 56" Copper wire.' },
-      { id: 5, val: 'Ornament AC/DC RF kit', mrp: 13300, description: 'Royal Ornament AC/DC RF kit 56" Copper wire.' },
+      { id: 5, val: 'RL-050 AC/DC RF kit', mrp: 10100, description: 'Royal LifeStyle Series RL-050 Model AC/DC RF kit 56" Copper wire.' },
+      { id: 6, val: 'Ornament AC/DC RF kit', mrp: 13300, description: 'Royal Ornament AC/DC RF kit 56" Copper wire.' },
     ],
   },
   {
@@ -207,7 +216,7 @@ const CONTENT = [
       { id: 2, val: 'Pedestal Deluxe 24" Blue/Black', mrp: 11700, description: 'Royal Pedestal Deluxe 24" Black/Blue Copper wire' },
       { id: 3, val: 'Pedestal Designer 24"', mrp: 12000, description: 'Royal Pedestal Designer (Cross Base) 24" Copper wire' },
       { id: 4, val: 'Pedestal Deluxe 24" AC/DC Remote', mrp: 13300, description: 'Royal Pedestal Deluxe AC/DC Remote Control 24" Copper wire' },
-      { id: 5, val: 'Pedestal 24"', mrp: 20400, description: 'Royal Mist Fan (Mystic) 24" Copper wire' },
+      { id: 5, val: 'Mist Fan 24"', mrp: 20400, description: 'Royal Mist Fan (Mystic) 24" Copper wire' },
       { id: 6, val: 'Pedestal 30"', mrp: 16000, description: 'Royal Pedestal 30" Copper wire' },
     ],
   },
@@ -229,9 +238,9 @@ const CONTENT = [
     category_name: 'Myga Bracket',
     subcategory: [
       { id: 1, val: 'Myga Bracket 18"', mrp: 8100, description: 'Royal Myga Bracket 18" Copper wire.' },
-      { id: 1, val: 'Myga Bracket 20"', mrp: 10400, description: 'Royal Myga Bracket 20" Copper wire.' },
-      { id: 1, val: 'Myga Bracket 24"', mrp: 10500, description: 'Royal Myga Bracket 24" Copper wire.' },
-      { id: 1, val: 'Myga Bracket 24" Panel', mrp: 10800, description: 'Royal Myga Bracket 24" with Panel Copper wire.' },
+      { id: 2, val: 'Myga Bracket 20"', mrp: 10400, description: 'Royal Myga Bracket 20" Copper wire.' },
+      { id: 3, val: 'Myga Bracket 24"', mrp: 10500, description: 'Royal Myga Bracket 24" Copper wire.' },
+      { id: 4, val: 'Myga Bracket 24" Panel', mrp: 10800, description: 'Royal Myga Bracket 24" with Panel Copper wire.' },
     ],
   },
   {
@@ -283,8 +292,8 @@ const CONTENT = [
       { id: 1, val: 'Glamour TCP 18"', mrp: 8100, description: 'Royal Glamour TCP 18" Copper wire' },
       { id: 2, val: 'Unique Pesdestal 18"', mrp: 8550, description: 'Royal Unique Pedestal 18" Copper wire' },
       { id: 3, val: 'Unique Pesdestal Remote 18"', mrp: 9250, description: 'Royal Unique Pedestal 18" Remote Copper wire' },
-      { id: 4, val: 'Taable 12"', mrp: 5550, description: 'Royal Table 12" Copper wire' },
-      { id: 4, val: 'Taable 14"', mrp: 5750, description: 'Royal Table 14" Copper wire' },
+      { id: 4, val: 'Table 12"', mrp: 5550, description: 'Royal Table 12" Copper wire' },
+      { id: 5, val: 'Table 14"', mrp: 5750, description: 'Royal Table 14" Copper wire' },
     ],
   },
   {
@@ -299,13 +308,11 @@ const CONTENT = [
   {
     key: 11,
     isExpanded: false,
-    category_name: 'Item 12',
-    subcategory: [{ id: 31, val: 'Sub Cat 31' }],
-  },
-  {
-    key: 12,
-    isExpanded: false,
-    category_name: 'Item 13',
-    subcategory: [{ id: 32, val: 'Sub Cat 32' }],
+    category_name: 'Discount',
+    subcategory: [
+      { id: 1, mrp: '300', val: 'Ceiling/Exhaust/Bracket/Louver/Table', description: 'Home Service Number # 042-111769251' },
+      { id: 2, mrp: '400', val: 'Pedestal / LifeStyle Series', description: 'Home Service Number # 042-111769251' },
+      { id: 3, mrp: '600', val: 'Mist', description: 'Home Service Number # 042-111769251' },
+    ],
   },
 ];

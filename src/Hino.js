@@ -24,7 +24,7 @@ const ExpandableComponent = ({ item, onClickFunction }) => {
   }, [item.isExpanded]);
 
   return (
-    <View>
+    <View style={styles.mainHeader}>
       {/*Header of the Expandable List Item*/}
       <TouchableOpacity
         activeOpacity={0.8}
@@ -44,7 +44,8 @@ const ExpandableComponent = ({ item, onClickFunction }) => {
             style={styles.content}
             onPress={() => alert('Name: ' + item.val + '\nMRP: ' + item.mrp + '\nDescription: ' + item.description)}>
             <Text style={styles.text}>
-              {key + 1}. {item.val} - {item.mrp}
+              {/* {key < 9 ? '0'+ (key+1) : (key+1)}.  */}
+              . {item.mrp} - {item.val}           
             </Text>
             <View style={styles.separator} />
           </TouchableOpacity>
@@ -80,15 +81,16 @@ const Hino = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#8f0c1f', paddingLeft: 5 }}>
       <View style={styles.container}>
         <View style={{ flexDirection: 'row', padding: 10 }}>
-          <Text style={styles.titleText}>Rate List</Text>
+          <Text style={styles.titleText}>Purchase Rate List</Text>
           <TouchableOpacity onPress={() => setMultiSelect(!multiSelect)}>
             <Text
               style={{
                 textAlign: 'center',
                 justifyContent: 'center',
+                color: '#f8da17',
               }}>
               {multiSelect
                 ? 'Enable Single \n Expand'
@@ -119,26 +121,35 @@ const styles = StyleSheet.create({
   },
   titleText: {
     flex: 1,
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: 'bold',
+    color: '#fff',
   },
-  header: {
+  mainHeader: {
     backgroundColor: '#F5FCFF',
+    paddingLeft: 1,
+    paddingRight: 1,
+    margin: 1,
+  },  
+  header: {
+    backgroundColor: '#d42e3b',
     padding: 20,
+    margin: 1,
   },
   headerText: {
-    fontSize: 16,
+    fontSize: 22,
+    color: '#f8da17',
     fontWeight: '500',
   },
   separator: {
     height: 0.5,
-    backgroundColor: '#808080',
+    backgroundColor: 'red',
     width: '95%',
     marginLeft: 16,
     marginRight: 16,
   },
   text: {
-    fontSize: 16,
+    fontSize: 18,
     color: '#606070',
     padding: 10,
   },
@@ -159,16 +170,16 @@ const CONTENT = [
       { id: 2, val: 'Deluxe - Platinum - Opal 56"', mrp: 7850, description: 'Hino Deluxe / Platinum / Opal 56" Copper wire.\n> CCA wire - 7250' },
       { id: 3, val: 'Hi Standard', mrp: 7150, description: 'Hino Economy/Hi-Standard 56" Copper wire.\n> CCA wire - 6550' },
       { id: 4, val: 'Water Proof', mrp: 7900, description: 'Hino Water Proof Emperor 56" Copper wire\n> Majesty Water Proof 56" Copper Wire  MRP - 8000' },
-      { id: 4, val: 'Passion 36"', mrp: 6850, description: 'Hino Passion 36" Copper wire' },
-      { id: 5, val: 'Passion 56"', mrp: 8000, description: 'Hino Passion 56" Copper wire' },
-      { id: 6, val: 'Regency', mrp: 8100, description: 'Hino Regency 56" Copper wire' },
-      { id: 7, val: 'Regent / Regal', mrp: 8100, description: 'Hino Regent / Regal 56" Copper wire' },
-      { id: 8, val: 'Jem - Trinity', mrp: 8200, description: 'Hino Jem 56" Copper wire' },
-      { id: 9, val: 'Energy Saver 50w', mrp: 8200, description: 'Hino Energy Saver 50 watt 56" Copper wire' },
-      { id: 10, val: 'Noble - Imperial 3B', mrp: 8350, description: 'Hino Noble / Imperial 3 Blade 56" Copper wire' },
-      { id: 11, val: 'Imperial 4B', mrp: 8550, description: 'Hino Imperial 4 Blade 56" Copper wire' },
-      { id: 12, val: 'Ornament 5B', mrp: 13000, description: 'Hino Ornament 5 Blade 56" Copper wire' },
+      { id: 5, val: 'Passion 36"', mrp: 6850, description: 'Hino Passion 36" Copper wire' },
+      { id: 6, val: 'Passion 56"', mrp: 8000, description: 'Hino Passion 56" Copper wire' },
+      { id: 7, val: 'Regency', mrp: 8100, description: 'Hino Regency 56" Copper wire' },
+      { id: 8, val: 'Regent / Regal', mrp: 8100, description: 'Hino Regent / Regal 56" Copper wire' },
+      { id: 9, val: 'Jem - Trinity', mrp: 8200, description: 'Hino Jem 56" Copper wire' },
+      { id: 10, val: 'Energy Saver 50w', mrp: 8200, description: 'Hino Energy Saver 50 watt 56" Copper wire' },
+      { id: 11, val: 'Noble - Imperial 3B', mrp: 8350, description: 'Hino Noble / Imperial 3 Blade 56" Copper wire' },
+      { id: 12, val: 'Imperial 4B', mrp: 8550, description: 'Hino Imperial 4 Blade 56" Copper wire' },
       { id: 13, val: 'RL-040', mrp: 10000, description: 'Hino LifeStyle Series RL-040 Model 56" Copper wire' },
+      { id: 14, val: 'Ornament 5B', mrp: 13000, description: 'Hino Ornament 5 Blade 56" Copper wire' },
     ],
   },
   {
@@ -299,13 +310,10 @@ const CONTENT = [
   {
     key: 11,
     isExpanded: false,
-    category_name: 'Item 12',
-    subcategory: [{ id: 31, val: 'Sub Cat 31' }],
-  },
-  {
-    key: 12,
-    isExpanded: false,
-    category_name: 'Item 13',
-    subcategory: [{ id: 32, val: 'Sub Cat 32' }],
+    category_name: 'Discount',
+    subcategory: [
+      { id: 1, mrp: '300', val: 'All', description: 'Home Service Number # 042-111769251' },
+      { id: 2, mrp: '400', val: 'LifeStyle Series', description: 'Home Service Number # 042-111769251' },
+    ],
   },
 ];

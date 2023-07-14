@@ -24,7 +24,7 @@ const ExpandableComponent = ({ item, onClickFunction }) => {
   }, [item.isExpanded]);
 
   return (
-    <View>
+    <View style={styles.mainHeader}>
       {/*Header of the Expandable List Item*/}
       <TouchableOpacity
         activeOpacity={0.8}
@@ -44,8 +44,8 @@ const ExpandableComponent = ({ item, onClickFunction }) => {
             style={styles.content}
             onPress={() => alert('Name: ' + item.val + '\nMRP: ' + item.mrp + '\nDescription: ' + item.description)}>
             <Text style={styles.text}>
-              {key + 1}. {item.val} - {item.mrp}
-            </Text>
+              {/* {key < 9 ? '0'+ (key+1) : (key+1)}.  */}
+              . {item.mrp} - {item.val}            </Text>
             <View style={styles.separator} />
           </TouchableOpacity>
         ))}
@@ -80,15 +80,16 @@ const GFC = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#8f0c1f', paddingLeft: 5 }}>
       <View style={styles.container}>
         <View style={{ flexDirection: 'row', padding: 10 }}>
-          <Text style={styles.titleText}>Rate List</Text>
+          <Text style={styles.titleText}>Purchase Rate List</Text>
           <TouchableOpacity onPress={() => setMultiSelect(!multiSelect)}>
             <Text
               style={{
                 textAlign: 'center',
                 justifyContent: 'center',
+                color: '#f8da17',
               }}>
               {multiSelect
                 ? 'Enable Single \n Expand'
@@ -119,26 +120,34 @@ const styles = StyleSheet.create({
   },
   titleText: {
     flex: 1,
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: 'bold',
+    color: '#fff',
   },
-  header: {
+  mainHeader: {
     backgroundColor: '#F5FCFF',
+    paddingLeft: 1,
+    paddingRight: 1,
+    margin: 1,
+  },  
+  header: {
+    backgroundColor: '#d42e3b',
     padding: 20,
+    margin: 1,
   },
   headerText: {
-    fontSize: 16,
+    fontSize: 22,
     fontWeight: '500',
   },
   separator: {
     height: 0.5,
-    backgroundColor: '#808080',
+    backgroundColor: 'red',
     width: '95%',
     marginLeft: 16,
     marginRight: 16,
   },
   text: {
-    fontSize: 16,
+    fontSize: 18,
     color: '#606070',
     padding: 10,
   },
@@ -155,20 +164,18 @@ const CONTENT = [
     isExpanded: false,
     category_name: 'Ceiling Fans',
     subcategory: [
-      { id: 1, val: 'Deluxe 36"', mrp: 6650, description: 'GFC Deluxe 36" Copper wire' },
-      { id: 2, val: 'Deluxe - Platinum - Opal 56"', mrp: 7850, description: 'GFC Deluxe / Platinum / Opal 56" Copper wire.\n> CCA wire - 7250' },
-      { id: 3, val: 'Hi Standard', mrp: 7150, description: 'GFC Economy/Hi-Standard 56" Copper wire.\n> CCA wire - 6550' },
-      { id: 4, val: 'Water Proof', mrp: 7900, description: 'GFC Water Proof Emperor 56" Copper wire\n> Majesty Water Proof 56" Copper Wire  MRP - 8000' },
-      { id: 4, val: 'Passion 36"', mrp: 6850, description: 'GFC Passion 36" Copper wire' },
-      { id: 5, val: 'Passion 56"', mrp: 8000, description: 'GFC Passion 56" Copper wire' },
-      { id: 6, val: 'Regency', mrp: 8100, description: 'GFC Regency 56" Copper wire' },
-      { id: 7, val: 'Regent / Regal', mrp: 8100, description: 'GFC Regent / Regal 56" Copper wire' },
-      { id: 8, val: 'Jem - Trinity', mrp: 8200, description: 'GFC Jem 56" Copper wire' },
-      { id: 9, val: 'Energy Saver 50w', mrp: 8200, description: 'GFC Energy Saver 50 watt 56" Copper wire' },
-      { id: 10, val: 'Noble - Imperial 3B', mrp: 8350, description: 'GFC Noble / Imperial 3 Blade 56" Copper wire' },
-      { id: 11, val: 'Imperial 4B', mrp: 8550, description: 'GFC Imperial 4 Blade 56" Copper wire' },
-      { id: 12, val: 'Ornament 5B', mrp: 13000, description: 'GFC Ornament 5 Blade 56" Copper wire' },
-      { id: 13, val: 'RL-040', mrp: 10000, description: 'GFC LifeStyle Series RL-040 Model 56" Copper wire' },
+      { id: 1, val: 'Deluxe 36"', mrp: 6400, description: 'GFC Deluxe 36" Copper wire.' },
+      { id: 2, val: 'Deluxe 56"', mrp: 7550, description: 'GFC Deluxe 56" Copper wire.\n> CCA wire - 7000' },
+      { id: 3, val: 'Awami 56"', mrp: 6850, description: 'GFC Awami 56" Copper wire.\n> CCA wire - 6200' },
+      { id: 4, val: 'Water Proof', mrp: 7810, description: 'GFC Water Proof 56" Copper wire.' },
+      { id: 5, val: 'Karachi / Nabeel / Ravi 56"', mrp: 7650, description: 'GFC Karachi / Nabeel / Ravi  56" Copper wire' },
+      { id: 6, val: 'Marvel 56"', mrp: 7830, description: 'GFC Marvel 56" Copper wire.\n> CCA wire - 7620' },
+      { id: 7, val: 'Sapphire / Mansion', mrp: 8040, description: 'GFC Sapphire 56" Copper wire\n> CCA wire - 7830' },
+      { id: 8, val: 'Crescent', mrp: 7920, description: 'GFC Crescent 56" Copper wire' },
+      { id: 9, val: 'Perfect Plus', mrp: 8450, description: 'GFC Perfect Plus 56" Copper wire' },
+      { id: 10, val: 'Karachi 50w', mrp: 7830, description: 'GFC Energy Saver Karachi Model 60 watt 56" Copper wire' },
+      { id: 11, val: 'Brave', mrp: 11350, description: 'GFC Brave 56" Copper wire' },
+      { id: 12, val: 'Future 5B', mrp: 12650, description: 'GFC Future 5 Blade 56" Copper wire' },
     ],
   },
   {
@@ -176,12 +183,8 @@ const CONTENT = [
     isExpanded: false,
     category_name: 'AC/DC Inverter Series',
     subcategory: [
-      { id: 1, val: 'Expo Deluxe AC/DC', mrp: 7650, description: 'GFC Expo AC/DC 56" Copper wire.' },
-      { id: 2, val: 'Opal AC/DC', mrp: 7750, description: 'GFC Opal AC/DC 56" Copper wire.' },
-      { id: 3, val: 'Regency - Passion - Cresent AC/DC', mrp: 8300, description: 'GFC Passion/Regency/Cresent AC/DC 56" Copper wire.' },
-      { id: 4, val: 'Imperial AC/DC', mrp: 8550, description: 'GFC Water Proof Emperor  AC/DC 56" Copper wire.' },
-      { id: 4, val: 'RL-050 AC/DC RF kit', mrp: 10100, description: 'GFC LifeStyle Series RL-050 Model AC/DC RF kit 56" Copper wire.' },
-      { id: 5, val: 'Ornament AC/DC RF kit', mrp: 13300, description: 'GFC Ornament AC/DC RF kit 56" Copper wire.' },
+      { id: 1, val: 'Marvel AC/DC', mrp: 8060, description: 'GFC Marvel AC/DC 56" Copper wire.' },
+      { id: 2, val: 'Mansion AC/DC', mrp: 8150, description: 'GFC Mansion AC/DC 56" Copper wire.' },
     ],
   },
   {
@@ -189,13 +192,10 @@ const CONTENT = [
     isExpanded: false,
     category_name: 'False Ceiling',
     subcategory: [
-      { id: 1, val: 'False Ceiling 2 x 2', mrp: 9200, description: 'GFC False Ceiling 2 x 2  18" Copper wire' },
-      { id: 2, val: 'False Ceiling 2 x 2 Light/Wooden', mrp: 9500, description: 'GFC False Ceiling 2 x 2 Light/Wooden 18" Copper wire' },
-      { id: 3, val: 'Ceiling Exhaust 8" Grill', mrp: 3650, description: 'GFC Ceiling Exhaust 8" Grid Copper wire' },
-      { id: 4, val: 'Ceiling Exhaust 10" Grill', mrp: 3800, description: 'GFC Ceiling Exhaust 10" Grid Copper wire' },
-      { id: 5, val: 'Ceiling Exhaust 12" Grill', mrp: 4250, description: 'GFC Ceiling Exhaust 12" Grid Copper wire' },
-      { id: 6, val: 'Ceiling Exhaust 8" Panel', mrp: 3700, description: 'GFC Ceiling Exhaust 8" Panel Copper wire' },
-      { id: 7, val: 'Ceiling Exhaust 10" Panel', mrp: 3850, description: 'GFC Ceiling Exhaust 10" Panel Copper wire' },
+      { id: 1, val: 'False Ceiling 2 x 2', mrp: 8520, description: 'GFC False Ceiling 2 x 2  16" Copper wire' },
+      { id: 3, val: 'Ceiling Exhaust 8" Grill', mrp: 3500, description: 'GFC Ceiling Exhaust 8" Grid Copper wire' },
+      { id: 4, val: 'Ceiling Exhaust 10" Grill', mrp: 3650, description: 'GFC Ceiling Exhaust 10" Grid Copper wire' },
+      { id: 5, val: 'Ceiling Exhaust 12" Grill', mrp: 3820, description: 'GFC Ceiling Exhaust 12" Grid Copper wire' },
     ],
   },
   {
@@ -203,12 +203,10 @@ const CONTENT = [
     isExpanded: false,
     category_name: 'Pedestal Fan',
     subcategory: [
-      { id: 1, val: 'Pedestal 18" Black', mrp: 8700, description: 'GFC Pedestal 18" Copper wire' },
-      { id: 2, val: 'Pedestal Deluxe 24" Blue/Black', mrp: 11700, description: 'GFC Pedestal Deluxe 24" Black/Blue Copper wire' },
-      { id: 3, val: 'Pedestal Designer 24"', mrp: 12000, description: 'GFC Pedestal Designer (Cross Base) 24" Copper wire' },
-      { id: 4, val: 'Pedestal Deluxe 24" AC/DC Remote', mrp: 13300, description: 'GFC Pedestal Deluxe AC/DC Remote Control 24" Copper wire' },
-      { id: 5, val: 'Pedestal 24"', mrp: 20400, description: 'GFC Mist Fan (Mystic) 24" Copper wire' },
-      { id: 6, val: 'Pedestal 30"', mrp: 16000, description: 'GFC Pedestal 30" Copper wire' },
+      { id: 1, val: 'Pedestal 24" CCA', mrp: 10450, description: 'GFC Pedestal 24" Blue China coppper wire' },
+      { id: 2, val: 'Pedestal 24" Copper', mrp: 11350, description: 'GFC Pedestal 24" Blue Copper wire' },
+      { id: 3, val: 'Pedestal 24" Myga', mrp: 11875, description: 'GFC Pedestal (Cross Base) 24" Copper wire' },
+      { id: 4, val: 'Mist Fan 24"', mrp: 19800, description: 'GFC Mist Fan (Mystic) 24" Copper wire' },
     ],
   },
   {
@@ -216,11 +214,10 @@ const CONTENT = [
     isExpanded: false,
     category_name: 'Bracket Fan',
     subcategory: [
-      { id: 1, val: 'Bracket 12"', mrp: 5550, description: 'GFC Bracket 12" Copper wire.' },
-      { id: 2, val: 'Bracket 14"', mrp: 5750, description: 'GFC Bracket 14" Copper wire.' },
-      { id: 3, val: 'Bracket 18"', mrp: 7100, description: 'GFC Bracket 18" Elegant Copper wire\n> CCA - 6300' },
-      { id: 4, val: 'Bracket 18" Remote', mrp: 5550, description: 'GFC Bracket Remote Control 18" Copper wire.' },
-      { id: 5, val: 'Bracket 24"', mrp: 9900, description: 'GFC Bracket 24" Copper wire.' },
+      { id: 1, val: 'Bracket 12"', mrp: 5270, description: 'GFC Bracket 12" Copper wire.' },
+      { id: 2, val: 'Bracket 14"', mrp: 5440, description: 'GFC Bracket 14" Copper wire.' },
+      { id: 3, val: 'Bracket 18"', mrp: 6800, description: 'GFC Bracket 18" Elegant Copper wire\n> CCA - 6100' },
+      { id: 4, val: 'Bracket 18" Remote', mrp: 7400, description: 'GFC Bracket Remote Control 18" Copper wire.' },
     ],
   },
   {
@@ -228,10 +225,8 @@ const CONTENT = [
     isExpanded: false,
     category_name: 'Myga Bracket',
     subcategory: [
-      { id: 1, val: 'Myga Bracket 18"', mrp: 8100, description: 'GFC Myga Bracket 18" Copper wire.' },
-      { id: 1, val: 'Myga Bracket 20"', mrp: 10400, description: 'GFC Myga Bracket 20" Copper wire.' },
-      { id: 1, val: 'Myga Bracket 24"', mrp: 10500, description: 'GFC Myga Bracket 24" Copper wire.' },
-      { id: 1, val: 'Myga Bracket 24" Panel', mrp: 10800, description: 'GFC Myga Bracket 24" with Panel Copper wire.' },
+      { id: 1, val: 'Myga Bracket 18"', mrp: 8230, description: 'GFC Myga Bracket 18" Copper wire.' },
+      { id: 2, val: 'Myga Bracket 24"', mrp: 10300, description: 'GFC Myga Bracket 24" Copper wire.\n> CCA - 9550' },
     ],
   },
   {
@@ -239,14 +234,8 @@ const CONTENT = [
     isExpanded: false,
     category_name: 'Louver Fan',
     subcategory: [
-      { id: 1, val: 'Louver Bracket 14"', mrp: 6300, description: 'GFC Louver Bracket 14" Copper wire\n> CCA - 5800' },
-      { id: 2, val: 'Louver Bracket 14" Color', mrp: 6400, description: 'GFC Louver Bracket 14" Color Model Copper wire' },
-      { id: 3, val: 'Louver Bracket 14" Remote', mrp: 6800, description: 'GFC Louver Bracket 14" Remote Control Copper wire' },
-      { id: 4, val: 'Louver Bracket 14" Color with Remote', mrp: 6900, description: 'GFC Louver Bracket 14" Remote Control Copper wire' },
-      { id: 5, val: 'Louver Pedestal 14"', mrp: 7400, description: 'GFC Louver Pedestal 14" Copper wire\n> CCA - 6900' },
-      { id: 6, val: 'Louver Pedestal 14" Color', mrp: 7600, description: 'GFC Louver Pedestal 14" Color Model Copper wire' },
-      { id: 7, val: 'Louver Pedestal 14" Remote', mrp: 7900, description: 'GFC Louver Pedestal 14" Remote Control Copper wire' },
-      { id: 8, val: 'Louver Pedestal 14" Color with Remote', mrp: 8100, description: 'GFC Louver Pedestal 14" Remote Control Copper wire' },
+      { id: 1, val: 'Louver Bracket 14"', mrp: 6070, description: 'GFC Louver Bracket 14" Copper wire\n> CCA - 5550' },
+      { id: 2, val: 'Louver Pedestal 14"', mrp: 7200, description: 'GFC Louver Pedestal 14" Copper wire\n> CCA - 6700' },
     ],
   },
   {
@@ -254,12 +243,15 @@ const CONTENT = [
     isExpanded: false,
     category_name: 'Exhaust Fan Metal',
     subcategory: [
-      { id: 1, val: 'Exhaust Metal 8"', mrp: 4000, description: 'GFC Exhaust Metal 8" Copper wire' },
-      { id: 2, val: 'Exhaust Metal 10"', mrp: 4350, description: 'GFC Exhaust Metal 10" Copper wire' },
-      { id: 3, val: 'Exhaust Metal 12" Simple/Grill', mrp: 5000, description: 'GFC Exhaust Metal 12" Simple/Grill Copper wire' },
-      { id: 4, val: 'Exhaust Metal 16" 4B', mrp: 7850, description: 'GFC Exhaust Metal 16" Copper wire' },
-      { id: 5, val: 'Exhaust Metal 18" 4B', mrp: 8300, description: 'GFC Exhaust Metal 18" Copper wire' },
-      { id: 6, val: 'Exhaust Metal 24" 6B', mrp: 10250, description: 'GFC Exhaust Metal 24" Copper wire' },
+      { id: 1, val: 'Exhaust Metal 6"', mrp: 3680, description: 'GFC Exhaust Metal 8" Copper wire.' },
+      { id: 2, val: 'Exhaust Metal 8"', mrp: 3880, description: 'GFC Exhaust Metal 8" Copper wire.' },
+      { id: 3, val: 'Exhaust Metal 10"', mrp: 4220, description: 'GFC Exhaust Metal 10" Copper wire.\n> CCA - 3930' },
+      { id: 4, val: 'Exhaust Metal 12" Simple/Grill', mrp: 4820, description: 'GFC Exhaust Metal 12" Simple/Grill Copper wire.\n> CCA - 4330' },
+      { id: 5, val: 'Exhaust Metal 14"', mrp: 5100, description: 'GFC Exhaust Metal 16" Copper wire.' },
+      { id: 6, val: 'Exhaust Metal 16"', mrp: 7570, description: 'GFC Exhaust Metal 16" Copper wire.' },
+      { id: 7, val: 'Exhaust Metal 18"', mrp: 7920, description: 'GFC Exhaust Metal 18" Copper wire.' },
+      { id: 8, val: 'Exhaust Metal 20"', mrp: 8360, description: 'GFC Exhaust Metal 18" Copper wire.' },
+      { id: 9, val: 'Exhaust Metal 24"', mrp: 9860, description: 'GFC Exhaust Metal 24" Copper wire.' },
     ],
   },
   {
@@ -267,24 +259,20 @@ const CONTENT = [
     isExpanded: false,
     category_name: 'Exhaust Fan Plastic',
     subcategory: [
-      { id: 1, val: 'Window Exhaust 6"', mrp: 2350, description: 'GFC Exhaust Window 6" Copper wire' },
-      { id: 2, val: 'Window Exhaust 8"', mrp: 2850, description: 'GFC Exhaust Window 8" Copper wire' },
-      { id: 3, val: 'Exhaust Plastic 6"', mrp: 3500, description: 'GFC Exhaust Plastic 6" Copper wire' },
-      { id: 4, val: 'Exhaust Plastic 8"', mrp: 4150, description: 'GFC Exhaust Plastic 8" Copper wire\n> CCA - 3850' },
-      { id: 5, val: 'Exhaust Plastic 10"', mrp: 4250, description: 'GFC Exhaust Plastic 10" Copper wire\n> CCA - 3950' },
-      { id: 6, val: 'Exhaust Plastic 12"', mrp: 4700, description: 'GFC Exhaust Plastic 12" Copper wire\n> CCA - 4300' },
+      { id: 1, val: 'Window Exhaust 6"', mrp: 2100, description: 'GFC Exhaust Window 6" Copper wire' },
+      { id: 2, val: 'Window Exhaust 8"', mrp: 2650, description: 'GFC Exhaust Window 8" Copper wire' },
+      { id: 3, val: 'Exhaust Plastic 6"', mrp: 3650, description: 'GFC Exhaust Plastic 6" Copper wire' },
+      { id: 4, val: 'Exhaust Plastic 8"', mrp: 4000, description: 'GFC Exhaust Plastic 8" Copper wire\n> CCA - 3700' },
+      { id: 5, val: 'Exhaust Plastic 10"', mrp: 4100, description: 'GFC Exhaust Plastic 10" Copper wire\n> CCA - 3850' },
+      { id: 6, val: 'Exhaust Plastic 12"', mrp: 4500, description: 'GFC Exhaust Plastic 12" Copper wire\n> CCA - 4150' },
     ],
   },
   {
     key: 9,
     isExpanded: false,
-    category_name: 'TCP & Table Fan',
+    category_name: 'Floor Fan',
     subcategory: [
-      { id: 1, val: 'Glamour TCP 18"', mrp: 8100, description: 'GFC Glamour TCP 18" Copper wire' },
-      { id: 2, val: 'Unique Pesdestal 18"', mrp: 8550, description: 'GFC Unique Pedestal 18" Copper wire' },
-      { id: 3, val: 'Unique Pesdestal Remote 18"', mrp: 9250, description: 'GFC Unique Pedestal 18" Remote Copper wire' },
-      { id: 4, val: 'Taable 12"', mrp: 5550, description: 'GFC Table 12" Copper wire' },
-      { id: 4, val: 'Taable 14"', mrp: 5750, description: 'GFC Table 14" Copper wire' },
+      { id: 1, val: 'Floor Fan 18"', mrp: 7950, description: 'GFC Floor Fan 18" Copper wire' },
     ],
   },
   {
@@ -292,20 +280,15 @@ const CONTENT = [
     isExpanded: false,
     category_name: 'Circomatic Fan',
     subcategory: [
-      { id: 1, val: 'Circo 18" Simple/Fix', mrp: 7000, description: 'GFC Circo 18" Simple/Fix Model Copper wire\n> CCA - 6200' },
-      { id: 2, val: 'Circo Fix 24"', mrp: 9750, description: 'GFC Circo 24" Fix Copper wire' },
+      { id: 1, val: 'Circo 18"', mrp: 6770, description: 'GFC Circo 18" Copper wire.' },
     ],
   },
   {
     key: 11,
     isExpanded: false,
-    category_name: 'Item 12',
-    subcategory: [{ id: 31, val: 'Sub Cat 31' }],
-  },
-  {
-    key: 12,
-    isExpanded: false,
-    category_name: 'Item 13',
-    subcategory: [{ id: 32, val: 'Sub Cat 32' }],
+    category_name: 'Discount',
+    subcategory: [
+      { id: 1, mrp: '0', val: '0% Discounted', description: '' },
+    ],
   },
 ];
