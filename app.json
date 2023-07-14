@@ -22,14 +22,14 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.msu041.myapp"
+      "package": "com.msu041.RateList"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "e8680c43-9463-4460-9aef-63dbea3d612d"
+        "projectId": "98fa3e86-9d16-44f3-8b50-2a86bfc5bdaa"
       }
     }
   }
